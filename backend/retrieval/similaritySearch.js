@@ -5,7 +5,7 @@ const logger = require("../utils/logger");
 /**
  * Search for similar document chunks based on a query embedding vector.
  *
- * Reads all stored embeddings from SQLite (populated by embedding.ipynb),
+ * Reads all stored embeddings from SQLite (populated by export_to_sqlite.py),
  * computes cosine similarity against the query embedding, and returns the
  * top-K most similar chunks.
  *
@@ -37,7 +37,7 @@ const similaritySearch = async (queryEmbedding, topK = 5) => {
 
     if (rows.length === 0) {
       logger.warn(
-        "No embeddings found in SQLite. Run embedding.ipynb and export to DB first."
+        "No embeddings found in SQLite. Run export_to_sqlite.py to populate the DB first."
       );
       return [];
     }
